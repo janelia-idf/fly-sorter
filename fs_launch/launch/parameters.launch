@@ -1,0 +1,3 @@
+<launch>
+  <rosparam ns="fs_parameters" file="$(env FS_CONFIG)/parameters/params.yaml"/>
+</launch>

@@ -1,0 +1,9 @@
+#goal definition
+string motor_name
+string position
+---
+#result definition
+string status
+---
+#feedback
+int32 count

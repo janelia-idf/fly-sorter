@@ -1,0 +1,9 @@
+<stack>
+  <description brief="fs">Fly Sorter</description>
+  <author>Maintained by Peter Polidoro</author>
+  <license>BSD</license>  
+  <review status="unreviewed" notes=""/>
+  <url>https://bitbucket.org/peterpolidoro/fs</url>
+  <depend stack="ros" />
+
+</stack>

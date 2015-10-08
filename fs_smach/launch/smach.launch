@@ -1,0 +1,10 @@
+<launch>
+  <arg name="hardware" default="true"/>
+  <arg name="mode" default="normal"/>
+  <arg name="run_mode" default="sorting"/>
+  <node pkg="fs_smach" type="automatic_mode.py" name="fs_smach" >
+    <param name="hardware" value="$(arg hardware)"/>
+    <param name="mode" value="$(arg mode)"/>
+    <param name="run_mode" value="$(arg run_mode)"/>
+  </node>
+</launch>

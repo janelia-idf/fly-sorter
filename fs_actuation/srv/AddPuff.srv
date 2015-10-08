@@ -1,0 +1,5 @@
+string relay
+int16 delay
+int16 duration
+---
+string status

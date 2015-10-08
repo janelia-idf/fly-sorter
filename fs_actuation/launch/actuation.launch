@@ -1,0 +1,10 @@
+<launch>
+  <arg name="hardware" default="true"/>
+  <arg name="mode" default="normal"/>
+  <node ns="fs_actuation" pkg="fs_actuation" type="actuation_web_server.py" name="fs_actuation_web_server" >
+    <param name="hardware" value="$(arg hardware)"/>
+    <param name="mode" value="$(arg mode)"/>
+  </node>
+  <node ns="fs_actuation" pkg="fs_actuation" type="actuation_ros_server.py" name="fs_actuation_ros_server" >
+  </node>
+</launch>

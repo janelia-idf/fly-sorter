@@ -1,0 +1,16 @@
+<package>
+  <description brief="fs_actuation">
+
+     fs_actuation
+
+  </description>
+  <author>Peter Polidoro</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>https://bitbucket.org/peterpolidoro/fs</url>
+  <depend package="rospy"/>
+  <depend package="arduino_relay_controller"/>
+
+</package>
+
+

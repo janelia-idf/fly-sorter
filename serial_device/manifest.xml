@@ -1,0 +1,14 @@
+<package>
+  <description brief="serial_device">
+
+     serial_device
+
+  </description>
+  <author>Peter Polidoro</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>https://bitbucket.org/peterpolidoro/python_libs</url>
+
+</package>
+
+

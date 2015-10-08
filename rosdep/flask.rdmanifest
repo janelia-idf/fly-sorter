@@ -1,0 +1,20 @@
+uri: 'https://bitbucket.org/peterpolidoro/faa/get/default.tar.gz'
+install-script: |
+  #!/bin/bash
+  source $FAA_PYTHON_VIRTUALENV/bin/activate
+  pip install flask --upgrade
+check-presence-script: |
+  #!/bin/bash
+  if [ -d "$FAA_PYTHON_VIRTUALENV" ]; then
+    installed_packages=`pip freeze`
+    flag=`echo $installed_packages | awk '{print match($0,"Flask==")}'`;
+    if [ $flag -gt 0 ]
+    then
+      exit 0
+    else
+      exit 1
+    fi
+  else
+    exit 1
+  fi  
+depends: [pip, pyenv]

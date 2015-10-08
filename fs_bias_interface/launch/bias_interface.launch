@@ -1,0 +1,4 @@
+<launch>
+  <node ns="fs_bias_interface" pkg="fs_bias_interface" type="bias_interface.py" name="fs_bias_interface" >
+  </node>
+</launch>

@@ -1,0 +1,13 @@
+uri: 'https://bitbucket.org/peterpolidoro/faa/get/default.tar.gz'
+install-script: |
+  #!/bin/bash
+  virtualenv --system-site-packages $FAA_PYTHON_VIRTUALENV
+check-presence-script: |
+  #!/bin/bash
+  if [ -d "$FAA_PYTHON_VIRTUALENV" ]
+  then
+    exit 0
+  else
+    exit 1
+  fi  
+depends: [virtualenv]

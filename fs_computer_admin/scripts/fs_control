@@ -1,0 +1,3 @@
+#!/bin/bash
+source $FS_PYTHON_VIRTUALENV/bin/activate
+rosrun fs_computer_admin fs_control.py $@

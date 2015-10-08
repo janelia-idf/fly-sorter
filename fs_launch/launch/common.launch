@@ -1,0 +1,25 @@
+<launch>
+  <include file="$(find fs_launch)/launch/parameters.launch" />
+  <arg name="hardware" default="true"/>
+  <arg name="mode" default="normal"/>
+  <include file="$(find fs_actuation)/launch/actuation.launch" >
+    <arg name="hardware" value="$(arg hardware)"/>
+    <arg name="mode" value="$(arg mode)"/>
+  </include>
+  <include file="$(find fs_actionlib)/launch/actionlib.launch" >
+    <arg name="hardware" value="$(arg hardware)"/>
+  </include>
+  <include file="$(find fs_smach)/launch/smach.launch" >
+    <arg name="hardware" value="$(arg hardware)"/>
+    <arg name="mode" value="$(arg mode)"/>
+  </include>
+  <include file="$(find fs_web_apps)/launch/common.launch" >
+    <arg name="mode" value="$(arg mode)"/>
+  </include>
+  <include file="$(find fs_bias_interface)/launch/bias_interface.launch" >
+  </include>
+  <!-- <group unless="$(arg hardware)"> -->
+  <!--   <node pkg="smach_viewer" type="smach_viewer.py" name="smach_viewer" /> -->
+  <!--   <node pkg="rqt_console" type="rqt_console" name="rqt_console" /> -->
+  <!-- </group> -->
+</launch>

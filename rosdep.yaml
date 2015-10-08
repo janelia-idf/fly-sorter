@@ -1,0 +1,92 @@
+# pyenv:
+#   ubuntu:
+#     source:
+#       uri: "file:///home/polidorop/groovy_ws/faa/rosdep/pyenv.rdmanifest"
+#       # uri: "https://bitbucket.org/api/1.0/repositories/peterpolidoro/faa/raw/tip/rosdep/pyenv.rdmanifest"
+
+# flask:
+#   ubuntu:
+#     source:
+#       uri: "file:///home/polidorop/groovy_ws/faa/rosdep/flask.rdmanifest"
+#       # uri: "https://bitbucket.org/api/1.0/repositories/peterpolidoro/faa/raw/tip/rosdep/flask.rdmanifest"
+
+flask:
+  ubuntu:
+    pip: flask
+
+# pip:
+#   ubuntu: 
+#     apt:
+#       packages: [python-pip]
+
+# virtualenv:
+#   ubuntu:
+#     apt:
+#       packages: [python-virtualenv]
+
+fabric:
+  ubuntu:
+    pip: fabric
+
+# pyserial:
+#   ubuntu: python-serial
+
+# bzr:
+#   ubuntu: bzr
+  
+# setuptools:
+#   ubuntu: python-setuptools
+
+# redis_server:
+#   ubuntu: redis-server
+
+# python_redis:
+#   ubuntu: python-redis
+
+# libdc1394-dev:
+#   ubuntu: libdc1394-22-dev
+
+# ros_camera_drivers:
+#   ubuntu: ros-electric-camera-drivers
+
+# ros_vision_opencv:
+#   ubuntu: ros-groovy-vision-opencv
+
+# ros_remote_lab:
+#   ubuntu: ros-electric-remote-lab
+
+# ubuntu_checkinstall:
+#   ubuntu: checkinstall
+
+# python_netifaces:
+#   ubuntu: python-netifaces
+
+# python_scipy:
+#   ubuntu: python-scipy
+
+# python_networkx:
+#   ubuntu: python-networkx
+
+# pydc1394: 
+#   ubuntu: |
+#     python $FAA_INSTALL_SCRIPTS/install_pydc1394.py
+
+# jinja2:
+#   ubuntu: |
+#     python $FAA_INSTALL_SCRIPTS/install_jinja2.py
+
+# werkzeug:
+#   ubuntu: |
+#     python $FAA_INSTALL_SCRIPTS/install_werkzeug.py
+
+# flask:
+#   ubuntu: |
+#     python $FAA_INSTALL_SCRIPTS/install_flask.py
+
+# flask_sijax:
+#   ubuntu: |
+#     python $FAA_INSTALL_SCRIPTS/install_flask_sijax.py
+
+# cvblob:
+#   ubuntu: |
+#     python $FAA_INSTALL_SCRIPTS/install_cvblob.py

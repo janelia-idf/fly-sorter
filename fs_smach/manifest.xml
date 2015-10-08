@@ -1,0 +1,23 @@
+<package>
+  <description brief="fs_smach">
+
+     fs_smach
+
+  </description>
+  <author>Peter Polidoro</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>https://bitbucket.org/peterpolidoro/fs</url>
+  <depend package="rospy"/>
+  <depend package='smach'/>
+  <depend package='smach_ros'/>
+  <depend package='actionlib'/>
+  <depend package='std_msgs'/>
+  <depend package='fs_utilities'/>
+  <depend package='fs_actuation'/>
+  <depend package='fs_actionlib'/>
+  <depend package='fs_bias_interface'/>
+
+</package>
+
+

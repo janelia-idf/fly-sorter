@@ -1,0 +1,16 @@
+<package>
+  <description brief="fs_web_apps">
+
+     fs_web_apps
+
+  </description>
+  <author>Peter Polidoro</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>https://bitbucket.org/peterpolidoro/fs</url>
+  <depend package="rospy"/>
+  <!-- <depend package="fs_utilities"/> -->
+
+</package>
+
+

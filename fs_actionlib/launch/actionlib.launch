@@ -1,0 +1,6 @@
+<launch>
+  <arg name="hardware" default="true"/>
+  <node ns="fs_actionlib" pkg="fs_actionlib" type="actionlib_server.py" name="fs_actionlib_server" >
+    <param name="hardware" value="$(arg hardware)"/>
+  </node>
+</launch>

@@ -1,0 +1,18 @@
+<package>
+  <description brief="fs_utilities">
+
+     fs_utilities
+
+  </description>
+  <author>Peter Polidoro</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>https://bitbucket.org/peterpolidoro/fs</url>
+  <depend package="rospy"/>
+
+  <!-- <rosdep name="redis_server"/> -->
+  <!-- <rosdep name="python_redis"/> -->
+
+</package>
+
+

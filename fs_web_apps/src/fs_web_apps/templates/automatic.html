@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Fly Sorter Controls</title>
+    <meta http-equiv="pragma" content="no-cache">
+    <link rel="stylesheet" href="static/jquery-ui-1.10.2.custom.min.css?v=1" type="text/css" />
+    <link rel="stylesheet" href="static/style.css?v=32" type="text/css" />
+    <script type="text/javascript" src="/static/js/ros/eventemitter2.min.js"></script>
+    <script type="text/javascript" src="/static/js/ros/roslib.min.js"></script>
+    <script type="text/javascript" src="/static/js/jquery/jquery-2.0.0.min.js"></script>
+    <script type="text/javascript" src="/static/js/jquery/jquery-ui-1.10.2.custom.min.js"></script>
+    <script type="text/javascript" src="/static/js/extras/prettyprint.js"></script>
+  </head>
+  
+  <body>
+    <div id="window" >
+      <!-- <button class="button" id="btnStop">Stop!</button> -->
+      <div id="tabs" >
+        <ul>
+          <li><a href="#tabs-0">Parameters</a></li>
+          <li><a href="#tabs-1">Initialize</a></li>
+          <li><a href="#tabs-2">Controls</a></li>
+          <li><a href="#tabs-3">Run Summary</a></li>
+        </ul>
+        <div id="tabs-0" >
+          <div class="center">
+            <button class="button" id="btnParameters">See Loaded Parameters</button>
+          </div>
+          <table id="tblParameters">
+            <tr class="rowParameters">
+              <td class="colParameters"><div class="parameters" id="parameters"></div></td>
+            </tr>
+          </table>
+        </div>
+        <div id="tabs-1" >
+          <div class="center">
+            <button class="button" id="btnInitialize">Initialize</button>
+          </div>
+          <div class="reminders">
+            <div class="center">
+              Please remember to do the following before intializing:
+            </div>
+            <div class="center remember">
+              Place ball bearings in the cappers.
+            </div>
+            <div class="center remember">
+              Check to make sure air supply is on.
+            </div>
+            <div class="center remember">
+              Check to make sure emergency stop power button is released.
+            </div>
+            <div class="center remember">
+              Check to make sure chiller is on and at proper temperature.
+            </div>
+            <div class="center">
+              Load input and output vials after intializing.
+            </div>
+          </div>
+          <div class="center initializing">
+            Intializing. Please wait.
+          </div>
+          <div class="center hibernating">
+            Hibernating. Please wait.
+          </div>
+          <div class="center initializeError">
+            Unable to communicate with ROS server. Click 'Reload' button below to refresh this page and the ROS server connection, then try to initialize again. If you receive an 'Unable to connect' error, then check to make sure the fly sorter control software is running properly.
+          </div>
+          <div class="center initializeError">
+            <button class="button" id="btnReload">Reload</button>
+          </div>
+        </div>
+        <div id="tabs-2" >
+          <div class="center">
+            <table id="tblControls">
+              <tr>
+                <td colspan="3">
+                  <h2>Run Mode</h2>
+                  <button class="button control run_mode" id="btnRunModeSorting">Sorting</button>
+                  <button class="button control run_mode" id="btnRunModeTraining">Training</button>
+                </td>
+                <td colspan="4">
+                  <h2>Vials to Run</h2>
+                  <button class="button control select" id="btnSelectAll">Select All</button>
+                  <button class="button control select" id="btnSelectNone">Select None</button>
+                </td>
+                <td colspan="3">
+                  <h2>Output Position</h2>
+                  <button class="button control output" id="btnOutputHome">Home</button>
+                  <button class="button control output" id="btnOutputLoad">Load</button>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <img id="img_vial_10" class="img_vial">
+                </td>
+                <td>
+                  <img id="img_vial_9" class="img_vial">
+                </td>
+                <td>
+                  <img id="img_vial_8" class="img_vial">
+                </td>
+                <td>
+                  <img id="img_vial_7" class="img_vial">
+                </td>
+                <td>
+                  <img id="img_vial_6" class="img_vial">
+                </td>
+                <td>
+                  <img id="img_vial_5" class="img_vial">
+                </td>
+                <td>
+                  <img id="img_vial_4" class="img_vial">
+                </td>
+                <td>
+                  <img id="img_vial_3" class="img_vial">
+                </td>
+                <td>
+                  <img id="img_vial_2" class="img_vial">
+                </td>
+                <td>
+                  <img id="img_vial_1" class="img_vial">
+                </td>
+              </tr>
+              <tr id="vialsToRun">
+                <td>
+                  <input type="checkbox" id="vial_10" name="vialSelect" value="vial_10" /><label for="vial_10">Vial 10</label>
+                </td>
+                <td>
+                  <input type="checkbox" id="vial_9" name="vialSelect" value="vial_9" /><label for="vial_9">Vial 9</label>
+                </td>
+                <td>
+                  <input type="checkbox" id="vial_8" name="vialSelect" value="vial_8" /><label for="vial_8">Vial 8</label>
+                </td>
+                <td>
+                  <input type="checkbox" id="vial_7" name="vialSelect" value="vial_7" /><label for="vial_7">Vial 7</label>
+                </td>
+                <td>
+                  <input type="checkbox" id="vial_6" name="vialSelect" value="vial_6" /><label for="vial_6">Vial 6</label>
+                </td>
+                <td>
+                  <input type="checkbox" id="vial_5" name="vialSelect" value="vial_5" /><label for="vial_5">Vial 5</label>
+                </td>
+                <td>
+                  <input type="checkbox" id="vial_4" name="vialSelect" value="vial_4" /><label for="vial_4">Vial 4</label>
+                </td>
+                <td>
+                  <input type="checkbox" id="vial_3" name="vialSelect" value="vial_3" /><label for="vial_3">Vial 3</label>
+                </td>
+                <td>
+                  <input type="checkbox" id="vial_2" name="vialSelect" value="vial_2" /><label for="vial_2">Vial 2</label>
+                </td>
+                <td>
+                  <input type="checkbox" id="vial_1" name="vialSelect" value="vial_1" /><label for="vial_1">Vial 1</label>
+                </td>
+              </tr>
+              <tr id="genderSelectMale" class="genderSelect">
+                <td>
+                  <input type="checkbox" id="vial_10_male" name="male" value="vial_10" /><label  for="vial_10_male">Male</label>
+                </td>
+                <td>
+                  <input type="checkbox" id="vial_9_male" name="male" value="vial_9" /><label  for="vial_9_male">Male</label>
+                </td>
+                <td>
+                  <input type="checkbox" id="vial_8_male" name="male" value="vial_8" /><label  for="vial_8_male">Male</label>
+                </td>
+                <td>
+                  <input type="checkbox" id="vial_7_male" name="male" value="vial_7" /><label  for="vial_7_male">Male</label>
+                </td>
+                <td>
+                  <input type="checkbox" id="vial_6_male" name="male" value="vial_6" /><label  for="vial_6_male">Male</label>
+                </td>
+                <td>
+                  <input type="checkbox" id="vial_5_male" name="male" value="vial_5" /><label  for="vial_5_male">Male</label>
+                </td>
+                <td>
+                  <input type="checkbox" id="vial_4_male" name="male" value="vial_4" /><label  for="vial_4_male">Male</label>
+                </td>
+                <td>
+                  <input type="checkbox" id="vial_3_male" name="male" value="vial_3" /><label  for="vial_3_male">Male</label>
+                </td>
+                <td>
+                  <input type="checkbox" id="vial_2_male" name="male" value="vial_2" /><label  for="vial_2_male">Male</label>
+                </td>
+                <td>
+                  <input type="checkbox" id="vial_1_male" name="male" value="vial_1" /><label  for="vial_1_male">Male</label>
+                </td>
+              </tr>
+              <tr id="genderSelectFemale" class="genderSelect">
+                <td>
+                  <input type="checkbox" id="vial_10_female" name="female" value="vial_10" /><label  for="vial_10_female">Female</label>
+                </td>
+                <td>
+                  <input type="checkbox" id="vial_9_female" name="female" value="vial_9" /><label  for="vial_9_female">Female</label>
+                </td>
+                <td>
+                  <input type="checkbox" id="vial_8_female" name="female" value="vial_8" /><label  for="vial_8_female">Female</label>
+                </td>
+                <td>
+                  <input type="checkbox" id="vial_7_female" name="female" value="vial_7" /><label  for="vial_7_female">Female</label>
+                </td>
+                <td>
+                  <input type="checkbox" id="vial_6_female" name="female" value="vial_6" /><label  for="vial_6_female">Female</label>
+                </td>
+                <td>
+                  <input type="checkbox" id="vial_5_female" name="female" value="vial_5" /><label  for="vial_5_female">Female</label>
+                </td>
+                <td>
+                  <input type="checkbox" id="vial_4_female" name="female" value="vial_4" /><label  for="vial_4_female">Female</label>
+                </td>
+                <td>
+                  <input type="checkbox" id="vial_3_female" name="female" value="vial_3" /><label  for="vial_3_female">Female</label>
+                </td>
+                <td>
+                  <input type="checkbox" id="vial_2_female" name="female" value="vial_2" /><label  for="vial_2_female">Female</label>
+                </td>
+                <td>
+                  <input type="checkbox" id="vial_1_female" name="female" value="vial_1" /><label  for="vial_1_female">Female</label>
+                </td>
+              </tr>
+              <tr id="genderSelectMixed" class="genderSelect">
+                <td>
+                  <input type="checkbox" id="vial_10_mixed" name="mixed" value="vial_10" /><label  for="vial_10_mixed">Mixed</label>
+                </td>
+                <td>
+                  <input type="checkbox" id="vial_9_mixed" name="mixed" value="vial_9" /><label  for="vial_9_mixed">Mixed</label>
+                </td>
+                <td>
+                  <input type="checkbox" id="vial_8_mixed" name="mixed" value="vial_8" /><label  for="vial_8_mixed">Mixed</label>
+                </td>
+                <td>
+                  <input type="checkbox" id="vial_7_mixed" name="mixed" value="vial_7" /><label  for="vial_7_mixed">Mixed</label>
+                </td>
+                <td>
+                  <input type="checkbox" id="vial_6_mixed" name="mixed" value="vial_6" /><label  for="vial_6_mixed">Mixed</label>
+                </td>
+                <td>
+                  <input type="checkbox" id="vial_5_mixed" name="mixed" value="vial_5" /><label  for="vial_5_mixed">Mixed</label>
+                </td>
+                <td>
+                  <input type="checkbox" id="vial_4_mixed" name="mixed" value="vial_4" /><label  for="vial_4_mixed">Mixed</label>
+                </td>
+                <td>
+                  <input type="checkbox" id="vial_3_mixed" name="mixed" value="vial_3" /><label  for="vial_3_mixed">Mixed</label>
+                </td>
+                <td>
+                  <input type="checkbox" id="vial_2_mixed" name="mixed" value="vial_2" /><label  for="vial_2_mixed">Mixed</label>
+                </td>
+                <td>
+                  <input type="checkbox" id="vial_1_mixed" name="mixed" value="vial_1" /><label  for="vial_1_mixed">Mixed</label>
+                </td>
+              </tr>
+              <tr id="genderDisplayRow">
+                <td>
+                  <img id="vial_10_gender" class="vialGenderDisplay">
+                </td>
+                <td>
+                  <img id="vial_9_gender" class="vialGenderDisplay">
+                </td>
+                <td>
+                  <img id="vial_8_gender" class="vialGenderDisplay">
+                </td>
+                <td>
+                  <img id="vial_7_gender" class="vialGenderDisplay">
+                </td>
+                <td>
+                  <img id="vial_6_gender" class="vialGenderDisplay">
+                </td>
+                <td>
+                  <img id="vial_5_gender" class="vialGenderDisplay">
+                </td>
+                <td>
+                  <img id="vial_4_gender" class="vialGenderDisplay">
+                </td>
+                <td>
+                  <img id="vial_3_gender" class="vialGenderDisplay">
+                </td>
+                <td>
+                  <img id="vial_2_gender" class="vialGenderDisplay">
+                </td>
+                <td>
+                  <img id="vial_1_gender" class="vialGenderDisplay">
+                </td>
+              </tr>
+              <tr>
+                <td colspan="3" rowspan="2">
+                  <div>
+                    <button class="button training" id="btnAllMale">All Male</button>
+                  </div>
+                  <div>
+                    <button class="button training" id="btnAllFemale">All Female</button>
+                  </div>
+                  <div>
+                    <button class="button training" id="btnAllMixed">All Mixed</button>
+                  </div>
+                </td>
+                <td colspan="4">
+                  <button class="button control" id="btnRunVials">Run Vials</button>
+                </td>
+                <td colspan="3">
+                </td>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <button class="button control" id="btnHibernate">Hibernate</button>
+                </td>
+                <td colspan="3">
+                </td>
+              </tr>
+            </table>
+          </div>
+          <div>
+            <span>Current Time: </span>
+            <span id="timeNow"></span>
+          </div>
+          <div>
+            <span>Start Time: </span>
+            <span id="timeStart"></span>
+          </div>
+          <div>
+            <span>Estimated End Time: </span>
+            <span id="timeEnd"></span>
+          </div>
+        </div>
+        <div id="tabs-3" >
+          <div class="center">
+            <button class="button" id="btnRunAgain">Finished Reading Summary</button>
+          </div>
+          <table id="tblSummary">
+            <tr>
+              <td>
+                <table id="tblRunSummary">
+                  <caption>Run Summary</caption>
+                  <tr class="rowRunSummary">
+                    <td class="colRunSummary"><div id="runSummary"></div></td>
+                  </tr>
+                </table>
+              </td>
+              <td>
+                <table id="tblSetSummary">
+                  <caption>Set Summary</caption>
+                  <tr class="rowSetSummary">
+                    <td class="colSetSummary"><div id="setSummary"></div></td>
+                  </tr>
+                </table>
+              </td>
+              <td>
+                <table id="tblFlySorterSummary">
+                  <caption>Fly Sorter Summary</caption>
+                  <tr class="rowFlySorterSummary">
+                    <td class="colFlySorterSummary"><div id="flySorterSummary"></div></td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript" src="/static/js/scripts/script.js"></script>
+  </body>
+</html>

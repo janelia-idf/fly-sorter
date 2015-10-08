@@ -1,0 +1,6 @@
+<launch>
+  <arg name="hardware" default="true"/>
+  <arg name="mode" default="normal"/>
+  <include file="$(find rosbridge_server)/launch/rosbridge_websocket.launch" />
+  <node pkg="fs_web_apps" type="automatic.py" name="fs_automatic" />
+</launch>

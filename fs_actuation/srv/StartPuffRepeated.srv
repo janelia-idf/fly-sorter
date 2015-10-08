@@ -1,0 +1,6 @@
+string relay
+int16 time_on
+int16 time_off
+int16 count
+---
+string status

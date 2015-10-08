@@ -1,0 +1,16 @@
+<package>
+  <description brief="arduino_device">
+
+     arduino_device
+
+  </description>
+  <author>Peter Polidoro</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>https://bitbucket.org/peterpolidoro/python_libs</url>
+
+  <depend package="serial_device"/>
+
+</package>
+
+

@@ -1,0 +1,16 @@
+<package>
+  <description brief="arduino_relay_controller">
+
+     arduino_relay_controller
+
+  </description>
+  <author>Peter Polidoro</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>https://bitbucket.org/peterpolidoro/arduino_relay_controller</url>
+
+  <depend package="arduino_device"/>
+
+</package>
+
+
